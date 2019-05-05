@@ -2,6 +2,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+dev
+
 ```
-docker build -f Dockerfile.dev .
+docker-compose up
+```
+
+production
+
+```
+docker build .
+docker run -p 8080:80 <ImageId>
 ```
