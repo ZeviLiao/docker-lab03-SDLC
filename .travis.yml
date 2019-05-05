@@ -6,4 +6,18 @@ before_install:
   - docker build -t zevi/docker-react -f Dockerfile.dev .
 
 script:
+  # - docker run zevi/docker-react npm run test -- --coverage //never stop.
   - echo 'hello world'
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-west-2'
+  app: 'aws-docker-name'
+  env: 'aws-docker-name-env'
+  bucket_name: 'xxxx-us-west-2'
+  bucket_path: 'aws-docker-name'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY # get from aws and store it travis ci.
+  secret_access_key:
+    secure: '$AWS_SECRET_KEY' # get from aws and store it travis ci.
